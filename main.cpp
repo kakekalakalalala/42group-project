@@ -1,8 +1,7 @@
 #include <iostream>
 #include <string>
 
-int printMenu(int x){
-    x = 999;
+int printMenu(int &x){
     std::cout << "Welcome Message designed by your group\n";
     std::cout << "*** SMS Main Menu ***\n";
     std::cout << "[1] Load Starting Data\n";
@@ -11,16 +10,17 @@ int printMenu(int x){
     std::cout << "[4] Edit Students\n";
     std::cout << "[5] Generate Transcript\n";
     std::cout << "[6] Credits and Exit\n";
-    std::cout << "*************";
+    std::cout << "*************\n";
+    std::cout << "Option (1 - 6): ";
     std::cin >> x; //get user input
     return x; // return user input
 }
 
 main(){
-    int response = 999; // set variable x to get user input;
+    int response = 999; // set variable to hold user input;
+
     do{
         printMenu(response);
-
         switch (response)
         {
         case 1:
