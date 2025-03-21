@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
 
-int printMenu(int &x, bool enabled){
-    std::cout << "Welcome Message designed by your group\n";
+int printMenu(int &x, bool &enabled){
+    std::cout << "All hail Ken Tsang.\n";
     std::cout << "*** SMS Main Menu ***\n";
     std::cout << "[1] Load Starting Data\n";
     std::cout << "[2] Show Student Records\n";
@@ -12,13 +12,17 @@ int printMenu(int &x, bool enabled){
     std::cout << "[6] Credits and Exit\n";
     std::cout << "*************\n";
     std::cout << "Option (1 - 6): ";
+
     std::cin >> x; //get user input
-    if(enabled || (x == 1)){
-        return x; // return user input only when data is loaded or is about to load data. R1.2  
-    }else if (!(enabled) && ((x >= 2) || (x <= 5))){ 
-        // show error if data is not loaded and user using function 2~5
+    if (!(enabled) && ((x >= 2) || (x <= 5)) && (x != 1)){ 
+        // show error only when data is not loaded and user using function 2~5. R1.2
         std::cout << "Starting data is not yet loaded. Please load starting data first!\n";
+        x = 0;
+    }else if(!(enabled) && (x == 1)){
+        enabled = true;
     }
+    return x; // return user input
+    // we should rewrite this actually.s
 }
 
 class studentdata{
@@ -30,8 +34,9 @@ class studentdata{
     char major[30];
     float gpa;
     char subjectname[7];
-    int grade;
+    int credit;
     char grade[2];
+
 };
 
 
@@ -40,7 +45,7 @@ class studentdata{
 
 
 
-main(){
+int main(void){
     int response = 999; // set variable to hold user input;
     bool boo = false;
     do{
@@ -66,10 +71,12 @@ main(){
         case 6:
             std::cout << response << std::endl;
             break;
-
-
         default:
+            std::cout << response << std::endl;
             break;
         }
+        system("pause");
+        system("cls");
     }while(response != 6);
+    return 0;
 }
