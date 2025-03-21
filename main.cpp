@@ -77,6 +77,7 @@ int main(void){
         }
         system("pause");
         system("cls");
+        //need better solution
     }while(response != 6);
     return 0;
 }
